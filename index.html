@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北海道の堆肥 - 堆肥検索</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">北海道の堆肥</div>
+            <nav>
+                <a href="#">HOME</a>
+                <a href="#" class="active">堆肥検索</a>
+                <a href="#">堆肥計算</a>
+                <a href="#">カルテ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div id="search-form-section">
+                <h2 class="instruction">まず、堆肥購入後の散布方法を決めて下さい</h2>
+                
+                <div class="spread-method-section">
+                    <label class="radio-button">
+                        <input type="radio" name="spread-method" value="self">
+                        <span>自分で散布</span>
+                    </label>
+                    <label class="radio-button">
+                        <input type="radio" name="spread-method" value="request">
+                        <span>散布までしてほしい</span>
+                    </label>
+                    <label class="radio-button">
+                        <input type="radio" name="spread-method" value="undecided">
+                        <span>決めていない</span>
+                    </label>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="section-title">堆肥の生産地で絞り込み</h3>
+                    <div class="map-filter-container">
+                        <div class="map-container">
+                            <div id="production-area-map" class="hokkaido-map"></div>
+                        </div>
+                        <div class="area-list-container">
+                            <div id="production-area-list" class="area-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="section-title">畜種で絞り込み</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-button">
+                            <input type="checkbox" name="livestock" value="cattle">
+                            <span>牛ふん</span>
+                        </label>
+                        <label class="checkbox-button">
+                            <input type="checkbox" name="livestock" value="pig">
+                            <span>豚ふん</span>
+                        </label>
+                        <label class="checkbox-button">
+                            <input type="checkbox" name="livestock" value="chicken">
+                            <span>鶏ふん</span>
+                        </label>
+                        <label class="checkbox-button">
+                            <input type="checkbox" name="livestock" value="other">
+                            <span>その他</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="section-title">荷姿で絞り込み</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-button">
+                            <input type="checkbox" name="package" value="bara">
+                            <span>バラ</span>
+                        </label>
+                        <label class="checkbox-button">
+                            <input type="checkbox" name="package" value="flecon">
+                            <span>フレコン</span>
+                        </label>
+                        <label class="checkbox-button">
+                            <input type="checkbox" name="package" value="truck">
+                            <span>トラック・ダンプ</span>
+                        </label>
+                        <label class="checkbox-button">
+                            <input type="checkbox" name="package" value="other">
+                            <span>その他</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="section-title">散布対象場所で絞り込み</h3>
+                    <div class="map-filter-container">
+                        <div class="map-container">
+                            <div id="spread-area-map" class="hokkaido-map"></div>
+                        </div>
+                        <div class="area-list-container">
+                            <div id="spread-area-list" class="area-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-button-container">
+                    <button id="search-button" class="search-button">この条件で検索</button>
+                </div>
+            </div>
+
+            <section id="results-section" class="results-section hidden">
+                <div class="results-header">
+                    <div class="results-brand">
+                        <span class="results-logo">みやざきの堆肥</span>
+                        <nav class="results-nav">
+                            <a href="#">HOME</a>
+                            <a href="#" class="active">堆肥検索</a>
+                            <a href="#">施用量計算カルテ</a>
+                        </nav>
+                    </div>
+                    <button id="back-to-search" class="back-button">戻る</button>
+                </div>
+
+                <div class="results-summary">
+                    <h2>絞り込み検索結果</h2>
+                    <p class="results-count">検索結果：<span id="result-count">0件</span></p>
+                    <div class="results-condition-list">
+                        <div><span class="condition-label">散布方法：</span><span id="summary-spread-method">未選択</span></div>
+                        <div><span class="condition-label">畜種：</span><span id="summary-livestock">未選択</span></div>
+                        <div><span class="condition-label">散布対象場所：</span><span id="summary-spread-area">未選択</span></div>
+                    </div>
+                </div>
+
+                <div id="results-list" class="results-list"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
