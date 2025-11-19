@@ -351,6 +351,8 @@ nav a:hover {
     gap: 15px;
     max-height: 400px;
     overflow-y: auto;
+    background-color: #ffffff;
+    padding: 10px;
 }
 
 .area-group {
@@ -539,3 +541,69 @@ footer {
     color: #aaa;
 }
 
+/* ▼私たちについて（About）ページのデザイン ▼ */
+.about-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.about-title {
+    text-align: center;
+    color: #2d5016;
+    font-size: 28px;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #2d5016;
+}
+
+.about-image-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.about-text {
+    line-height: 2.0;
+    font-size: 16px;
+}
+
+.catchphrase {
+    font-size: 24px;
+    color: #2d5016;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #f0f8f0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.about-text strong {
+    color: #c62828; /* 強調したい部分（宝じゃん！）を赤く */
+    background: linear-gradient(transparent 70%, #ffeb3b 70%); /* マーカー風 */
+}
+
+.message {
+    margin-top: 40px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    color: #2d5016;
+    border: 2px dashed #2d5016;
+    padding: 20px;
+    border-radius: 10px;
+}
