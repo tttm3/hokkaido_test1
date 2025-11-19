@@ -353,6 +353,8 @@ nav a:hover {
     overflow-y: auto;
     background-color: #ffffff;
     padding: 10px;
+    position: relative;
+    z-index: 10;
 }
 
 .area-group {
