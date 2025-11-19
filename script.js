@@ -333,12 +333,29 @@ function updateMapAndList(mapContainerId, type) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 初期表示
     renderMap('production-area-map', selectionState.production.areas, selectionState.production.municipalities);
     renderAreaList('production-area-list', selectionState.production.areas, selectionState.production.municipalities);
     
     renderMap('spread-area-map', selectionState.spread.areas, selectionState.spread.municipalities);
     renderAreaList('spread-area-list', selectionState.spread.areas, selectionState.spread.municipalities);
     
+    // ▼▼▼ ブラウザの「戻る」ボタン検知処理（ここを追加） ▼▼▼
+    window.addEventListener('popstate', (event) => {
+        // 履歴の状態がない（＝最初のフォーム画面に戻った）場合
+        if (!event.state || event.state.view !== 'results') {
+            document.getElementById('results-section').classList.add('hidden');
+            document.getElementById('search-form-section').classList.remove('hidden');
+            // スクロールをトップに戻す（任意）
+            window.scrollTo(0, 0);
+        } else {
+            // 進むボタンで結果画面に来た場合などは結果を表示
+            document.getElementById('search-form-section').classList.add('hidden');
+            document.getElementById('results-section').classList.remove('hidden');
+        }
+    });
+
+    // 検索ボタンクリック時の処理
     document.getElementById('search-button').addEventListener('click', () => {
         const spreadMethod = document.querySelector('input[name="spread-method"]:checked')?.value;
         const livestock = Array.from(document.querySelectorAll('input[name="livestock"]:checked')).map(cb => cb.value);
@@ -354,17 +371,23 @@ document.addEventListener('DOMContentLoaded', () => {
             spreadMunicipalities: Array.from(selectionState.spread.municipalities)
         };
 
-        // ここで検索ロジックを実行
         const filteredResults = filterResults(searchParams);
         renderSearchResults(filteredResults, searchParams);
 
+        // ▼▼▼ 履歴に「結果画面」を追加する（ここを追加） ▼▼▼
+        history.pushState({ view: 'results' }, '', '#results');
+
         document.getElementById('search-form-section').classList.add('hidden');
         document.getElementById('results-section').classList.remove('hidden');
+        
+        // 結果画面のトップへスクロール
+        window.scrollTo(0, 0);
     });
 
+    // 「戻る」ボタン（画面内のボタン）クリック時の処理
     document.getElementById('back-to-search').addEventListener('click', () => {
-        document.getElementById('results-section').classList.add('hidden');
-        document.getElementById('search-form-section').classList.remove('hidden');
+        // ▼▼▼ ブラウザの戻る機能と同じ挙動にする（ここを変更） ▼▼▼
+        history.back(); 
     });
 });
 
