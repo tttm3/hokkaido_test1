@@ -564,7 +564,6 @@ function renderSearchResults(results, params) {
         const card = document.createElement('div');
         card.className = `result-card ${item.theme || ''}`.trim();
         
-        // 安全対策：hokkaidoAreasがない場合でもエラーで止めずに「北海道」と表示する
         let areaName = '北海道';
         try {
             if (typeof hokkaidoAreas !== 'undefined' && hokkaidoAreas[item.areaId]) {
@@ -574,10 +573,17 @@ function renderSearchResults(results, params) {
             console.warn('エリア名の取得に失敗しました', e);
         }
 
+        // ▼▼▼ ここが修正ポイント ▼▼▼
+        // 「散布までしてほしい(request)」の時だけボタンを表示する
+        const ctaHtml = item.method === 'request' 
+            ? '<button class="result-cta">散布します</button>' 
+            : ''; // それ以外（selfなど）なら何も表示しない
+        // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
         card.innerHTML = `
             <div class="result-card-header">
                 <span class="result-region-tag">${areaName}</span>
-                <button class="result-cta">散布します</button>
+                ${ctaHtml}
             </div>
             <div class="result-company-name">${item.company}</div>
             <div class="result-details">
