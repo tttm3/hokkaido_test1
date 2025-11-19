@@ -1,7 +1,7 @@
 // 地図の初期化とインタラクティブ機能
 
 // 使用する地図画像のパス
-const MAP_IMAGE_PATH = 'images/hokkaido/北海道エリア_文字なし.png';
+const MAP_IMAGE_PATH = 'images/hokkaido/北海道エリア_文字なし.svg';
 const HAS_MAP_IMAGE = true;
 const MAP_VIEWBOX = { width: 1152, height: 896 };
 
