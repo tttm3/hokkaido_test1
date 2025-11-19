@@ -609,3 +609,142 @@ footer {
     padding: 20px;
     border-radius: 10px;
 }
+
+/* =========================================
+   モバイル・レスポンシブ対応用スタイル
+   (styles.cssの一番下に追加してください)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    
+    /* --- ヘッダー周り --- */
+    .header-container {
+        flex-direction: column;
+        align-items: stretch; /* 横幅いっぱいに広げる */
+        padding: 10px 15px;
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center; /* 中央寄せ */
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 13px;
+        padding: 8px 5px;
+        background-color: #f9f9f9; /* タップ範囲をわかりやすく */
+        border-radius: 4px;
+    }
+
+    /* --- メインコンテンツ --- */
+    .container {
+        padding: 20px 15px;
+    }
+
+    /* 散布方法のラジオボタンを縦並びにする */
+    .spread-method-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .radio-button {
+        width: 100%;
+        justify-content: center;
+        padding: 15px; /* タップしやすいように広げる */
+    }
+
+    /* --- 地図とリストエリア --- */
+    .filter-section {
+        padding: 15px;
+    }
+
+    /* 地図とリストを縦に積む */
+    .map-filter-container {
+        flex-direction: column;
+    }
+
+    .map-container, 
+    .area-list-container {
+        min-width: 100%; /* 幅いっぱいに */
+    }
+
+    /* 地図の高さをスマホ用に調整 */
+    .hokkaido-map {
+        min-height: 250px; 
+    }
+
+    /* リストの高さを少し抑える（スクロールしやすく） */
+    .area-list {
+        max-height: 250px;
+    }
+
+    /* --- チェックボックス群（畜種・荷姿） --- */
+    .checkbox-group {
+        gap: 10px;
+    }
+
+    .checkbox-button {
+        width: 100%; /* 幅いっぱい */
+        justify-content: center; /* 中央寄せ */
+        padding: 12px;
+    }
+
+    /* --- 検索ボタン --- */
+    .search-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    /* --- 検索結果カード --- */
+    .result-card {
+        padding: 15px;
+    }
+
+    .result-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    /* カード内の「散布します」ラベル */
+    .result-cta {
+        width: 100%;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .result-company-name {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    /* 詳細ボタンの配置調整（絶対配置をやめてフローに戻す） */
+    .result-card {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .result-details {
+        margin-bottom: 15px;
+    }
+
+    .result-detail-button {
+        position: static; /* 右下固定を解除 */
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        margin-top: auto; /* 一番下に配置 */
+    }
+    
+    /* --- フッター --- */
+    .footer-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
