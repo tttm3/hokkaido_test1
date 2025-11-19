@@ -98,6 +98,9 @@ function drawAreaPaths(svg, selectedAreas, selectedMunicipalities, containerId) 
 function renderAreaList(containerId, selectedAreas = new Set(), selectedMunicipalities = new Set()) {
     const container = document.getElementById(containerId);
     if (!container) return;
+    
+    // 【追加】リストのIDから、対応する地図のIDを逆算する
+    const mapContainerId = containerId.replace('-list', '-map');
 
     container.innerHTML = '';
 
@@ -122,7 +125,8 @@ function renderAreaList(containerId, selectedAreas = new Set(), selectedMunicipa
         areaInput.value = areaId;
         areaInput.checked = selectedAreas.has(areaId);
         areaInput.addEventListener('change', (e) => {
-            toggleAreaSelection(areaId, containerId);
+            // 【修正】containerId ではなく mapContainerId を渡す
+            toggleAreaSelection(areaId, mapContainerId);
         });
         areaCheckbox.appendChild(areaInput);
         const areaSpan = document.createElement('span');
@@ -139,7 +143,8 @@ function renderAreaList(containerId, selectedAreas = new Set(), selectedMunicipa
             input.value = municipality;
             input.checked = selectedMunicipalities.has(municipality);
             input.addEventListener('change', (e) => {
-                toggleMunicipalitySelection(municipality, areaId, containerId);
+                // 【修正】containerId ではなく mapContainerId を渡す
+                toggleMunicipalitySelection(municipality, areaId, mapContainerId);
             });
             checkbox.appendChild(input);
             const span = document.createElement('span');
