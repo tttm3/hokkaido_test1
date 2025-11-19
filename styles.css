@@ -612,33 +612,53 @@ footer {
 
 /* =========================================
    モバイル・レスポンシブ対応用スタイル
-   (styles.cssの一番下に追加してください)
+   (ここから下を丸ごと書き換えてください)
    ========================================= */
 @media screen and (max-width: 768px) {
     
     /* --- ヘッダー周り --- */
     .header-container {
         flex-direction: column;
-        align-items: stretch; /* 横幅いっぱいに広げる */
-        padding: 10px 15px;
+        align-items: center;
+        padding: 15px 10px;
     }
 
     .logo {
+        width: 100%;
         text-align: center;
         margin-bottom: 15px;
+        box-sizing: border-box;
     }
 
-    nav {
-        flex-wrap: wrap;
-        justify-content: center; /* 中央寄せ */
-        gap: 10px;
+    /* ヘッダーのナビゲーションを「2列の均等配置」に変更 */
+    .header-container nav {
+        display: grid;                  /* グリッドレイアウトにする */
+        grid-template-columns: 1fr 1fr; /* 1:1 の2列にする */
+        gap: 8px;                       /* ボタン間の隙間 */
+        width: 100%;                    /* 横幅いっぱい */
     }
 
-    nav a {
-        font-size: 13px;
-        padding: 8px 5px;
-        background-color: #f9f9f9; /* タップ範囲をわかりやすく */
-        border-radius: 4px;
+    /* ヘッダー内のリンクのみにスタイルを適用（フッターには影響させない） */
+    .header-container nav a {
+        font-size: 12px;                /* 文字を少し小さくして収まりよく */
+        padding: 12px 4px;
+        background-color: #f8f8f8;      /* 薄いグレーの背景 */
+        border: 1px solid #e0e0e0;      /* 薄い枠線 */
+        border-radius: 6px;             /* 角丸 */
+        color: #333;                    /* 文字色 */
+        text-align: center;             /* 文字を中央揃え */
+        display: flex;                  /* 上下中央揃えのため */
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;               /* 指で押しやすい高さ */
+        text-decoration: none;
+    }
+    
+    /* アクティブなリンクのデザイン */
+    .header-container nav a.active {
+        background-color: #2d5016;
+        color: #fff;
+        border-color: #2d5016;
     }
 
     /* --- メインコンテンツ --- */
@@ -655,7 +675,7 @@ footer {
     .radio-button {
         width: 100%;
         justify-content: center;
-        padding: 15px; /* タップしやすいように広げる */
+        padding: 15px;
     }
 
     /* --- 地図とリストエリア --- */
@@ -663,35 +683,35 @@ footer {
         padding: 15px;
     }
 
-    /* 地図とリストを縦に積む */
     .map-filter-container {
         flex-direction: column;
     }
 
     .map-container, 
     .area-list-container {
-        min-width: 100%; /* 幅いっぱいに */
+        min-width: 100%;
     }
 
-    /* 地図の高さをスマホ用に調整 */
     .hokkaido-map {
         min-height: 250px; 
     }
 
-    /* リストの高さを少し抑える（スクロールしやすく） */
     .area-list {
         max-height: 250px;
     }
 
-    /* --- チェックボックス群（畜種・荷姿） --- */
+    /* --- チェックボックス群 --- */
     .checkbox-group {
+        display: grid; /* ここもグリッドにして揃える */
+        grid-template-columns: 1fr 1fr; /* 2列 */
         gap: 10px;
     }
 
     .checkbox-button {
-        width: 100%; /* 幅いっぱい */
-        justify-content: center; /* 中央寄せ */
+        width: 100%;
+        justify-content: center;
         padding: 12px;
+        font-size: 13px;
     }
 
     /* --- 検索ボタン --- */
@@ -703,6 +723,8 @@ footer {
 
     /* --- 検索結果カード --- */
     .result-card {
+        display: flex;
+        flex-direction: column;
         padding: 15px;
     }
 
@@ -712,7 +734,6 @@ footer {
         gap: 10px;
     }
     
-    /* カード内の「散布します」ラベル */
     .result-cta {
         width: 100%;
         border-radius: 4px;
@@ -724,27 +745,35 @@ footer {
         margin-top: 10px;
     }
 
-    /* 詳細ボタンの配置調整（絶対配置をやめてフローに戻す） */
-    .result-card {
-        display: flex;
-        flex-direction: column;
-    }
-    
     .result-details {
         margin-bottom: 15px;
     }
 
     .result-detail-button {
-        position: static; /* 右下固定を解除 */
+        position: static;
         width: 100%;
         text-align: center;
         padding: 12px;
-        margin-top: auto; /* 一番下に配置 */
+        margin-top: auto;
     }
     
-    /* --- フッター --- */
+    /* --- フッター（ここを修正） --- */
     .footer-nav {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: column; /* 縦並び */
+        gap: 20px;
+        align-items: center;
+    }
+    
+    /* フッターのリンクには背景色をつけず、元の文字色（白）を生かす */
+    .footer-nav a {
+        padding: 10px; /* タップしやすい範囲は確保 */
+        width: 100%;
+        text-align: center;
+        display: block;
+        border-bottom: 1px solid rgba(255,255,255,0.1); /* 薄い区切り線 */
+    }
+    
+    .footer-nav a:last-child {
+        border-bottom: none;
     }
 }
