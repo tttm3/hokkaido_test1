@@ -500,5 +500,42 @@ nav a:hover {
 .area-list::-webkit-scrollbar-thumb:hover {
     background: #1f3610;
 }
+/* ▼フッターのスタイルを追加▼ */
+footer {
+    background-color: #222; /* 背景色：黒に近いグレー */
+    color: #fff;            /* 文字色：白 */
+    padding: 40px 0;
+    margin-top: 60px;
+}
 
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: opacity 0.3s;
+}
+
+.footer-nav a:hover {
+    opacity: 0.7; /* マウスを乗せると少し薄くなる */
+}
+
+.copyright {
+    font-size: 12px;
+    color: #aaa;
+}
 
