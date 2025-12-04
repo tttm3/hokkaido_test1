@@ -1,7 +1,7 @@
 // 地図の初期化とインタラクティブ機能
 
 // 使用する地図画像のパス
-const MAP_IMAGE_PATH = 'images/hokkaido/北海道エリア_文字なし.png';
+const MAP_IMAGE_PATH = 'images/hokkaido/北海道エリア_文字なし.jpg';
 const HAS_MAP_IMAGE = true;
 const MAP_VIEWBOX = { width: 1152, height: 896 };
 
@@ -281,14 +281,14 @@ function drawAreaPaths(svg, selectedAreas, selectedMunicipalities, containerId) 
                 if (isSelected) {
                     path.classList.add('selected');
                 } else {
-                    fillColor = '#e0e0e0';
+                    fillColor = 'transparent';
                 }
             }
 
             path.setAttribute('fill', fillColor);
             path.setAttribute('stroke', '#666');
             path.setAttribute('stroke-width', '2');
-            path.setAttribute('opacity', '0.5');
+            path.setAttribute('opacity', '1.0');
 
             path.addEventListener('click', () => {
                 toggleAreaSelection(areaId, containerId);
